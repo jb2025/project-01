@@ -1,0 +1,96 @@
+//Request Image
+
+var fs = require('fs');
+var path = require('path');
+ 
+var av = require('tessel-av');
+var camera = new av.Camera();
+var capture = camera.capture();
+var captureTime = Date().getTime();
+
+imagefile = capture.on('data', function(data) {
+  fs.writeFile(path.join("images/", captureTime, data),
+});
+});
+
+
+    $(function() {
+        var params = {
+          "url": "images/captureTime+'.jpeg'";
+        };
+      
+        $.ajax({
+            url: "https://api.projectoxford.ai/emotion/v1.0/recognize?" + $.param(params),
+            beforeSend: function(xhrObj){
+                // Request headers
+                xhrObj.setRequestHeader("Content-Type","application/jpeg");
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","{subscription key}");
+            },
+            type: "POST",
+            data: response.read();
+
+        })
+        .done(function(data) {
+            alert("success");
+        })
+        .fail(function() {
+            alert("error");
+        });
+    });
+</script>
+</body>
+</html>
+
+//Tessel Ambient Trigger
+var tessel = require('tessel');
+var ambientlib = require('ambient-attx4'); // Replace '../' with 'ambient-attx4' in your own code
+
+var ambient = ambientlib.use(tessel.port['A']);
+var led = tessel.led[0];
+
+ambient.on('ready', function () {
+  ambient.setSoundTrigger(0.1);
+  ambient.on('sound-trigger', function(data) {
+    console.log("trigger");
+    // Clear it
+    ambient.clearSoundTrigger();
+    //After 1.5 seconds reset sound trigger
+    setTimeout(function () {
+        ambient.setSoundTrigger(0.1);
+    },100);
+
+  });
+});
+
+ambient.on('error', function (err) {
+  console.log(err);
+});
+
+// To write the data from the camera
+
+
+		google.charts.load('current', {packages: ['corechart', 'line']});
+		google.charts.setOnLoadCallback(initChart);
+		
+
+		function initChart()
+		{
+			var options = {
+    			title: "Emotions";
+    		}
+
+			var  = new google.visualization.DataTable();
+			dataTable.addColumn('date', 'Time');
+			dataTable.addColumn('number', 'Anger');
+			dataTable.addColumn('number', 'Contempt');
+			dataTable.addColumn('number', 'Disgust');
+			dataTable.addColumn('number', 'Fear');
+			dataTable.addColumn('number', 'Happiness');
+			dataTable.addColumn('number', 'Neutral');
+			dataTable.addColumn('number', 'Sadness');
+			dataTable.addColumn('number', 'Surprise');
+
+			var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+			
+		}

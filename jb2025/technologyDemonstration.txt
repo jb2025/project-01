@@ -1,0 +1,1 @@
+For my project, I am cobbling together JavaScript that has been taught in class so I can focus on integration of the parts and creating an effective product. I have succesfully used the Microsoft Cognitive API before and have confirmed that I can poll and pull images from the webcam, which was the biggest technology hurdle.
